@@ -1,0 +1,25 @@
+{% extends '::front.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+
+        <h5>Affichage Produits</h5>
+    <div class="row">
+        {% for prod in products %}
+            {% include 'StoreProductBundle:Product:showIndexProduct.html.twig' with {'product': prod} %}
+        {% endfor %}
+    </div>
+
+
+
+
+
+    <hr>
+
+    <h5>Affichage Panier</h5>
+    {{ render(controller('StoreFrontBundle:Default:showMiniCart')) }}
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+security:
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        in_memory:
+            memory:
+                users:
+                    administrator: { password: C0smetiK!2501CWX, roles: [ 'ROLE_ADMIN' ] }
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        login:
+            pattern:  ^/demo/secured/login$
+            security: false
+
+        secured_area:
+            pattern:    ^/
+            anonymous: ~
+            http_basic:
+                realm: "Secured Demo Area"
+
+    access_control:
+        - { path: ^/demo/secured/hello/admin/, roles: ROLE_ADMIN }
+        - { path: ^/, roles: ROLE_ADMIN }
+        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }

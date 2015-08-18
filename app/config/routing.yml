@@ -1,0 +1,19 @@
+store_front:
+    resource: "@StoreFrontBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+_imagine:
+    resource: .
+    type:     imagine
+
+store_core:
+    resource: "@StoreCoreBundle/Controller/"
+    type:     annotation
+    prefix:   /admin
+
+store_product:
+    resource: "@StoreProductBundle/Controller/"
+    type:     annotation
+    prefix:   /admin
+
